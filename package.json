@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "antd": "^4.16.10",
-    "node-sass": "^6.0.1"
-  },
-  "devDependencies": {
-    "sass-loader": "^7.3.1"
-  }
-}
