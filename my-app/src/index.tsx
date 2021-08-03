@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ToDoList from './component/TodoList';
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <React.StrictMode>
