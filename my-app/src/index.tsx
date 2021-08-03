@@ -2,10 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import ToDoList from './component/TodoList';
 
 ReactDOM.render(
   <React.StrictMode>
-    test
+    <ToDoList />
   </React.StrictMode>,
   document.getElementById('root')
 );
