@@ -1,5 +1,5 @@
 import { defaultStateInerface } from '../interface/todoList'
-import { SET_TODULIST_INPUT_VALUE } from './action'
+import { SET_TODULIST_INPUT_VALUE, SET_TODULIST_LIST } from './action'
 const defaultState: defaultStateInerface = {
   todoList: {
     inputValue: '',
@@ -16,7 +16,18 @@ const reducer = (state = defaultState, action: any) => {
     case SET_TODULIST_INPUT_VALUE:
       return Object.assign({}, state, {
         todoList: {
+          ...state.todoList,
           inputValue: action.value
+        }
+      })
+    case SET_TODULIST_LIST:
+      console.log(222)
+      if (action.value === '') return state;
+      console.log(1111)
+      return Object.assign({}, state, {
+        todoList: {
+          ...state.todoList,
+          list: [...state.todoList.list, action.value]
         }
       })
   }
