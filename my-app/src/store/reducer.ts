@@ -11,7 +11,6 @@ const defaultState: defaultStateInerface = {
     ]
   }
 }
-
 const reducer = (state = defaultState, action: any) => {
   const newState = _.cloneDeep(state);
   switch (action.type) {
