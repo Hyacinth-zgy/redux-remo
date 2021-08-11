@@ -5,7 +5,7 @@ import styled from '../assets/TodoList.module.scss';
 import store from '../store';
 import { actionInterface } from '../interface/todoList';
 import { SET_TODULIST_INPUT_VALUE } from '../store/action';
-import { addListAxtion } from '../store/action-creater'
+import { addListAxtion, deleteListAction } from '../store/action-creater'
 import _ from 'lodash';
 import { defaultStateInerface } from '../interface/todoList'
 
@@ -47,7 +47,16 @@ export default function TodoList() {
 
   // 增加列表item
   const addListItem = () => {
-    store.dispatch(addListAxtion(inputValue))
+    store.dispatch(addListAxtion(inputValue));
+    const action: actionInterface = {
+      type: SET_TODULIST_INPUT_VALUE,
+      value: ''
+    }
+    store.dispatch(action)
+  }
+
+  const deleteListItem = (index: number) => {
+    store.dispatch(deleteListAction(index))
   }
 
   // TODULIST 视图层
@@ -60,8 +69,13 @@ export default function TodoList() {
       </div>
       <div className={styled['data-wrap']}>
         <List bordered dataSource={todoList} renderItem={
-          item => {
-            return <List.Item>{item}</List.Item>
+          (item, index) => {
+            return <List.Item>
+              <div className={styled['list-item-div']}>
+                <span>{item}</span>
+                <Button onClick={() => { deleteListItem(index) }}>删除</Button>
+              </div>
+            </List.Item>
           }
         }>
         </List>

@@ -1,5 +1,5 @@
 import { defaultStateInerface } from '../interface/todoList'
-import { SET_TODULIST_INPUT_VALUE, SET_TODULIST_LIST } from './action'
+import { SET_TODULIST_INPUT_VALUE, SET_TODULIST_LIST, DELETE_TODULIST_LIST } from './action'
 import _ from 'lodash'
 const defaultState: defaultStateInerface = {
   todoList: {
@@ -22,11 +22,18 @@ const reducer = (state = defaultState, action: any) => {
         }
       })
     case SET_TODULIST_LIST:
-      if (action.value === '') return newState;
+      {
+        if (action.value === '') return newState;
+        const { list } = newState.todoList;
+        if (list.includes(action.value)) return newState
+        list.push(action.value);
+        return newState
+      }
+    case DELETE_TODULIST_LIST: {
       const { list } = newState.todoList;
-      if (list.includes(action.value)) return newState
-      list.push(action.value);
+      list.splice(action.value, 1);
       return newState
+    }
   }
   return state
 }

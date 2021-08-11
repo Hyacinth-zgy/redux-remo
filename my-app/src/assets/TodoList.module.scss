@@ -34,4 +34,11 @@
     height: calc(100% - 40px);
     width: 100%;
   }
+
+  .list-item-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    line-height: 32px;
+  }
 }
