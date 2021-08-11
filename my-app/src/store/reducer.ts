@@ -1,17 +1,19 @@
 import { defaultStateInerface } from '../interface/todoList'
 import { SET_TODULIST_INPUT_VALUE, SET_TODULIST_LIST } from './action'
+import _ from 'lodash'
 const defaultState: defaultStateInerface = {
   todoList: {
     inputValue: '',
     list: [
-      '在8点开晨会，分配今天的任务代码，',
-      '在9点开晨会，分配今天的任务代码，',
-      '在10点开晨会，分配今天的任务代码，',
+      'ZW摸奶第一式',
+      'ZC三连第一式',
+      'JD到处找基波',
     ]
   }
 }
 
 const reducer = (state = defaultState, action: any) => {
+  const newState = _.cloneDeep(state);
   switch (action.type) {
     case SET_TODULIST_INPUT_VALUE:
       return Object.assign({}, state, {
@@ -21,15 +23,11 @@ const reducer = (state = defaultState, action: any) => {
         }
       })
     case SET_TODULIST_LIST:
-      console.log(222)
-      if (action.value === '') return state;
-      console.log(1111)
-      return Object.assign({}, state, {
-        todoList: {
-          ...state.todoList,
-          list: [...state.todoList.list, action.value]
-        }
-      })
+      if (action.value === '') return newState;
+      const { list } = newState.todoList;
+      if (list.includes(action.value)) return newState
+      list.push(action.value);
+      return newState
   }
   return state
 }

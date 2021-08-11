@@ -6,17 +6,29 @@ import store from '../store';
 import { actionInterface } from '../interface/todoList';
 import { SET_TODULIST_INPUT_VALUE } from '../store/action';
 import { addListAxtion } from '../store/action-creater'
+import _ from 'lodash';
+import { defaultStateInerface } from '../interface/todoList'
 
 export default function TodoList() {
   //定义数据
-  const [todoList, setTodoList] = useState([] as string[]);
+  const [state, setState] = useState({} as defaultStateInerface);
   const [inputValue, setInputValue] = useState('');
+  const [todoList, setTodoList] = useState([] as string[]);
 
   // 初始化数据
   useEffect(() => {
     store.subscribe(listenersStoreChange)
-    setTodoList(store.getState().todoList.list);
+    setState(store.getState());
   }, [])
+
+  useEffect(() => {
+    if (!_.isEqual(todoList, state?.todoList?.list)) {
+      setTodoList(state?.todoList?.list)
+    }
+    if (inputValue !== state?.todoList?.inputValue) {
+      setInputValue(state?.todoList?.inputValue)
+    }
+  }, [state])
 
   // React.ChangeEvent<HTMLInputElement>
   // React.FormEvent<HTMLInputElement>)
@@ -30,7 +42,7 @@ export default function TodoList() {
 
   // store 仓库监听
   const listenersStoreChange = () => {
-    setInputValue(store.getState().todoList.inputValue);
+    setState(store.getState());
   }
 
   // 增加列表item
