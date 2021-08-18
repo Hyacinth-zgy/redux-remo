@@ -5,11 +5,10 @@ import styled from '../assets/TodoList.module.scss';
 import store from '../store';
 import { actionInterface } from '../interface/todoList';
 import { SET_TODULIST_INPUT_VALUE } from '../store/action';
-import { addListAxtion, deleteListAction, setlistServerAction } from '../store/action-creater'
+import { addListAxtion, deleteListAction, setlistServerAction, getListReduxThunk, makeASandwichWithSecretSauce } from '../store/action-creater'
 import _ from 'lodash';
 import { defaultStateInerface } from '../interface/todoList';
 import axios from 'axios'
-
 export default function TodoList() {
   //定义数据
   const [state, setState] = useState({} as defaultStateInerface);
@@ -29,6 +28,16 @@ export default function TodoList() {
       store.dispatch(setlistServerAction(res.data))
       console.log(res)
     })
+  }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      const getlist = getListReduxThunk()
+      store.dispatch(makeASandwichWithSecretSauce('My partner')).then(() => {
+        console.log('Done!');
+      });
+      console.log('redux-thunk')
+    }, 2000)
   }, [])
 
   useEffect(() => {

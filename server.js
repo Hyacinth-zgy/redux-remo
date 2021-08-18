@@ -18,20 +18,7 @@ app.get("/productone", (req, res) => {
 
 app.get("/producttwo", (req, res) => {
   setTimeout(() => {
-    res.send([
-      {
-        id: 1,
-        name: "product2.1",
-      },
-      {
-        id: 2,
-        name: "product2.2",
-      },
-      {
-        id: 3,
-        name: "product2.3",
-      },
-    ]);
+    res.send(["ZW摸奶第二式", "ZCss三连第二式", "JD到处找基波二"]);
   }, 1000 + Math.random() * 2000);
 });
 
