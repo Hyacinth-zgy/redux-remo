@@ -5,9 +5,10 @@ import styled from '../assets/TodoList.module.scss';
 import store from '../store';
 import { actionInterface } from '../interface/todoList';
 import { SET_TODULIST_INPUT_VALUE } from '../store/action';
-import { addListAxtion, deleteListAction } from '../store/action-creater'
+import { addListAxtion, deleteListAction, setlistServerAction } from '../store/action-creater'
 import _ from 'lodash';
-import { defaultStateInerface } from '../interface/todoList'
+import { defaultStateInerface } from '../interface/todoList';
+import axios from 'axios'
 
 export default function TodoList() {
   //定义数据
@@ -19,6 +20,15 @@ export default function TodoList() {
   useEffect(() => {
     store.subscribe(listenersStoreChange)
     setState(store.getState());
+  }, [])
+
+  useEffect(() => {
+    // 使用axios获取数据
+    axios.get('http://localhost:4000/productone').then(res => {
+      console.log(res)
+      store.dispatch(setlistServerAction(res.data))
+      console.log(res)
+    })
   }, [])
 
   useEffect(() => {
