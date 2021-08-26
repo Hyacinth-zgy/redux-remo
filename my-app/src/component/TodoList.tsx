@@ -33,10 +33,6 @@ export default function TodoList() {
   useEffect(() => {
     setTimeout(() => {
       const getlist = getListReduxThunk()
-      store.dispatch(makeASandwichWithSecretSauce('My partner')).then(() => {
-        console.log('Done!');
-      });
-      console.log('redux-thunk')
     }, 2000)
   }, [])
 

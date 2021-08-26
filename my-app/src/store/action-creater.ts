@@ -1,6 +1,7 @@
 import { SET_TODULIST_LIST, DELETE_TODULIST_LIST, SET__TODULIST_LIST_SERVER } from './action'
-import { Dispatch } from 'redux';
+import { ActionCreator, Dispatch, Action } from 'redux';
 import axios from 'axios';
+import { ThunkAction } from 'redux-thunk';
 export function addListAxtion(itemText: string) {
   return {
     type: SET_TODULIST_LIST,
@@ -63,12 +64,12 @@ function fetchSecretSauce() {
   return fetch('https://www.google.com/search?q=secret+sauce');
 }
 
-export function makeASandwichWithSecretSauce(forPerson: any) {
+export function makeASandwichWithSecretSauce(forPerson: string) {
   // We can invert control here by returning a function - the "thunk".
   // When this function is passed to `dispatch`, the thunk middleware will intercept it,
   // and call it with `dispatch` and `getState` as arguments.
   // This gives the thunk function the ability to run some logic, and still interact with the store.
-  return function (dispatch: Dispatch): Promise<> {
+  return function (dispatch: Dispatch): Promise<any> {
     return fetchSecretSauce().then(
       (sauce) => dispatch(makeASandwich(forPerson, sauce)),
       (error) => dispatch(apologize('The Sandwich Shop', forPerson, error)),

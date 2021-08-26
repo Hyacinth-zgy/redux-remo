@@ -73,4 +73,4 @@
 9:reducer 小知识
 
 
-10: redux-thunk 提供异步使用
+10: redux-thunk 提供异步使用 https://github.com/reduxjs/redux-thunk
