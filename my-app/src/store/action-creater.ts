@@ -1,4 +1,4 @@
-import { SET_TODULIST_LIST, DELETE_TODULIST_LIST, SET__TODULIST_LIST_SERVER } from './action'
+import { SET_TODULIST_LIST, DELETE_TODULIST_LIST, SET__TODULIST_LIST_SERVER, REDUXSAGALIST } from './action'
 import { ActionCreator, Dispatch, Action } from 'redux';
 import axios from 'axios';
 import { ThunkAction } from 'redux-thunk';
@@ -75,4 +75,13 @@ export function makeASandwichWithSecretSauce(forPerson: string) {
       (error) => dispatch(apologize('The Sandwich Shop', forPerson, error)),
     );
   };
+}
+
+
+
+// redux-saga
+export const getSagaListAction = () => {
+  return {
+    type: REDUXSAGALIST
+  }
 }

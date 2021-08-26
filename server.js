@@ -22,6 +22,12 @@ app.get("/producttwo", (req, res) => {
   }, 1000 + Math.random() * 2000);
 });
 
+app.get("/productthree", (req, res) => {
+  setTimeout(() => {
+    res.send(["ZW摸奶第三式", "ZCss三连第三式", "JD到处找基波三"]);
+  }, 1000 + Math.random() * 2000);
+});
+
 app.listen(4000, () => {
   console.log("server app start on port 4000");
 });

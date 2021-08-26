@@ -5,7 +5,7 @@ import styled from '../assets/TodoList.module.scss';
 import store from '../store';
 import { actionInterface } from '../interface/todoList';
 import { SET_TODULIST_INPUT_VALUE } from '../store/action';
-import { addListAxtion, deleteListAction, setlistServerAction, getListReduxThunk, makeASandwichWithSecretSauce } from '../store/action-creater'
+import { addListAxtion, deleteListAction, setlistServerAction, getListReduxThunk, makeASandwichWithSecretSauce, getSagaListAction } from '../store/action-creater'
 import _ from 'lodash';
 import { defaultStateInerface } from '../interface/todoList';
 import axios from 'axios'
@@ -44,6 +44,11 @@ export default function TodoList() {
       setInputValue(state?.todoList?.inputValue)
     }
   }, [state])
+
+  useEffect(() => {
+    console.log(getSagaListAction())
+    store.dispatch(getSagaListAction())
+  }, [])
 
   // React.ChangeEvent<HTMLInputElement>
   // React.FormEvent<HTMLInputElement>)
