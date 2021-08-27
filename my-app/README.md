@@ -73,4 +73,5 @@
 9:reducer 小知识
 
 
-10: redux-thunk 提供异步使用 https://github.com/reduxjs/redux-thunk
+10: redux-thunk 提供异步使用 https://github.com/reduxjs/redux-thunk;
+12: redux-saga 提供异步调用，功能比redux-thunk更强，api更多，覆盖场景更多些

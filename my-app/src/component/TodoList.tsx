@@ -45,8 +45,8 @@ export default function TodoList() {
     }
   }, [state])
 
+  // 使用saga获取
   useEffect(() => {
-    console.log(getSagaListAction())
     store.dispatch(getSagaListAction())
   }, [])
 
