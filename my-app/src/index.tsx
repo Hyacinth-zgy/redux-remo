@@ -4,10 +4,12 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ToDoList from './component/TodoList';
 import "antd/dist/antd.css";
+import ReactReduxTodolist from './component/ReactReduxTodolist'
 
 ReactDOM.render(
   <React.StrictMode>
     <ToDoList />
+    <ReactReduxTodolist></ReactReduxTodolist>
   </React.StrictMode>,
   document.getElementById('root')
 );
