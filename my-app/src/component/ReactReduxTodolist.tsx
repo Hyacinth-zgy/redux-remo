@@ -1,6 +1,4 @@
 import { Input, Button, List } from 'antd';
-import { useEffect, useState } from 'react';
-import store from '../store';
 import styled from '../assets/TodoList.module.scss';
 import { defaultStateInerface } from '../interface/todoList';
 import { connect } from 'react-redux';
@@ -9,11 +7,6 @@ interface Props {
 }
 
 function ReactReduxTodolist(props: Props = {} as Props) {
-  let [data, setData] = useState({} as defaultStateInerface)
-  useEffect(() => {
-    setData(store.getState())
-    console.log(data)
-  }, [data])
   return (
     <div className={styled.todolist}>
       <div className={styled.data}>
