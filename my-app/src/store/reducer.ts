@@ -3,7 +3,7 @@ import { SET_TODULIST_INPUT_VALUE, SET_TODULIST_LIST, DELETE_TODULIST_LIST, SET_
 import _ from 'lodash'
 const defaultState: defaultStateInerface = {
   todoList: {
-    inputValue: '',
+    inputValue: 'JSP',
     list: [
       'ZW摸奶第一式',
       'ZC三连第一式',

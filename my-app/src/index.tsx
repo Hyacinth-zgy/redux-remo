@@ -4,12 +4,20 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import ToDoList from './component/TodoList';
 import "antd/dist/antd.css";
-import ReactReduxTodolist from './component/ReactReduxTodolist'
+import ReactReduxTodolist from './component/ReactReduxTodolist';
+
+// Provider 提供器
+import { Provider } from 'react-redux';
+import store from './store';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <ToDoList />
-    <ReactReduxTodolist></ReactReduxTodolist>
+    {/* <ReactReduxTodolist></ReactReduxTodolist> */}
+    <Provider store={store}>
+      <ReactReduxTodolist></ReactReduxTodolist>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

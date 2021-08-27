@@ -24,15 +24,13 @@ export default function TodoList() {
   useEffect(() => {
     // 使用axios获取数据
     axios.get('http://localhost:4000/productone').then(res => {
-      console.log(res)
       store.dispatch(setlistServerAction(res.data))
-      console.log(res)
     })
   }, [])
 
   useEffect(() => {
     setTimeout(() => {
-      const getlist = getListReduxThunk()
+      const getlist = getListReduxThunk();
     }, 2000)
   }, [])
 
